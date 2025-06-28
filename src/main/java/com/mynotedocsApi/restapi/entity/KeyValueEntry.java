@@ -3,18 +3,15 @@ package com.mynotedocsApi.restapi.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-import java.util.Objects;
 
 @Entity
-@Table(name = "item")
-public class Item {
+public class KeyValueEntry {
 
 	@Id
+	@Column(name = "config_key")
 	private String key;
 
-	@Column(columnDefinition = "TEXT")
+	@Column(name = "config_value", columnDefinition = "TEXT")
 	private String value;
 
 	@Override
@@ -41,24 +38,13 @@ public class Item {
 		return value;
 	}
 
-	public Item() {
+	public KeyValueEntry() {
 
 	}
 
-	public Item(String key, String value) {
+	public KeyValueEntry(String key, String value) {
 		this.key = key;
 		this.value = value;
 	}
 
-	@Override
-	public boolean equals(Object o) {
-		if (o == null || getClass() != o.getClass()) return false;
-		Item item = (Item) o;
-		return Objects.equals(key, item.key) && Objects.equals(value, item.value);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(key, value);
-	}
 }
