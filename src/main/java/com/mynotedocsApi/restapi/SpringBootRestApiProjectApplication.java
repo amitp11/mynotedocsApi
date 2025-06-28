@@ -1,4 +1,4 @@
-package com.sjprogramming.restapi;
+package com.mynotedocsApi.restapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
