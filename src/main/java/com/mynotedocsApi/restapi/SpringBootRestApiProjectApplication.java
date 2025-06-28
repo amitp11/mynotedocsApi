@@ -14,4 +14,13 @@ public class SpringBootRestApiProjectApplication {
 		SpringApplication.run(SpringBootRestApiProjectApplication.class, args);
 	}
 
+	@Bean
+	CommandLineRunner preload(KeyValueRepository repository) {
+		return args -> {
+			repository.save(new KeyValueEntry("cwa-prod", "{\"username\":\"admin-prod\",\"password\":\"prod123\"}"));
+			repository.save(new KeyValueEntry("cwa-dev", "{\"username\":\"admin-dev\",\"password\":\"dev123\"}"));
+			repository.save(new KeyValueEntry("ucd-prod", "{\"username\":\"ucd-admin-prod\",\"password\":\"secureProd\"}"));
+			repository.save(new KeyValueEntry("ucd-stage", "{\"username\":\"ucd-stage-user\",\"password\":\"stage321\"}"));
+		};
+	}
 }
